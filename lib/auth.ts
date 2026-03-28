@@ -1,5 +1,6 @@
 import { SignJWT, jwtVerify } from "jose";
 import bcrypt from "bcryptjs";
+import { cookies } from "next/headers";
 
 const SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
 
@@ -29,4 +30,10 @@ export async function hashPassword(password: string) {
 
 export async function comparePassword(password: string, hash: string) {
   return bcrypt.compare(password, hash);
+}
+
+export async function getSession() {
+  const token = (await cookies()).get("token")?.value;
+  if (!token) return null;
+  return await verifyToken(token);
 }
