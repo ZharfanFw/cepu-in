@@ -18,7 +18,7 @@ export async function GET() {
     return NextResponse.json({ success: true, data: listLaporan });
   } catch (error) {
     return NextResponse.json(
-      { error: "Gagal melihat laporan" },
+      { error: "Gagal mengambil data list laporan" },
       { status: 500 },
     );
   }
