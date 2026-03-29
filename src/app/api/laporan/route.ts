@@ -17,6 +17,7 @@ export async function GET() {
     });
     return NextResponse.json({ success: true, data: listLaporan });
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { error: "Gagal mengambil data list laporan" },
       { status: 500 },
@@ -36,7 +37,8 @@ export async function POST(request: Request) {
     const judul = formData.get("judul") as string;
     const deskripsi = formData.get("deskripsi") as string;
     const kategori = formData.get("kategori") as string;
-    const fotoBefore = formData.get("fotoBefore") as File;
+
+    const fotoBefore = formData.get("fotoBefore");
 
     if (!judul || !deskripsi || !kategori || !fotoBefore) {
       return NextResponse.json(
@@ -52,7 +54,14 @@ export async function POST(request: Request) {
       );
     }
 
-    // Upload to Cloudinary
+    // Upload cloudinary
+    if (!(fotoBefore instanceof File) || fotoBefore.size === 0) {
+      return NextResponse.json(
+        { error: "Format file tidak valid atau file kosong" },
+        { status: 400 },
+      );
+    }
+
     if (!fotoBefore.type.startsWith("image/")) {
       return NextResponse.json(
         { error: "Hanya file gambar yang diizinkan" },

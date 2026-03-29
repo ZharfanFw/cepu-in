@@ -11,6 +11,8 @@ export async function GET() {
         },
       },
     });
+
+    return NextResponse.json({ success: true, data: leaderboard });
   } catch (error) {
     return NextResponse.json(
       { error: "Gagal mengambil data leaderboard" },
