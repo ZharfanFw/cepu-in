@@ -8,6 +8,11 @@ const caraKerjaItems = [
 ]
 
 export default function Home() {
+  const scrolltoHash = function (element_id: string) {
+    const element = document.getElementById(element_id)
+    element?.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+  }
+
   return (
     <div>
 
@@ -20,7 +25,7 @@ export default function Home() {
 
             <div className="flex gap-2">
               <Button href="" label="Buat Laporan" primary icon="edit.svg" showIcon/>
-              <Button href="" label="Lihat Lebih Lanjut"/>
+              <Button href="#cara-kerja" label="Lihat Lebih Lanjut"/>
             </div>
           </div>
 
@@ -31,14 +36,14 @@ export default function Home() {
 
       </div>
 
-      <div className="flex flex-col items-center justify-center h-screen gap-18">
-        <div className="flex flex-col items-center gap-1">
+      <div className="flex flex-col items-center justify-center h-[120vh] gap-18 max-sm:gap-10 text-center">
+        <div id="cara-kerja"  className="flex flex-col items-center gap-1">
           <h2 className="text-4xl font-nunito font-bold text-(--color-normal-hover)">Cara Kerja</h2>
-          <p className="font-light text-md">Bantu RT/RW menjaga kenyamanan lingkungan. Hanya dengan 3 langkah!</p>
+          <p className="font-light text-md max-sm:text-[12.5px]">Bantu RT/RW menjaga kenyamanan lingkungan. Hanya dengan 3 langkah!</p>
         </div>
 
         <div className="flex">
-          <ul className="flex gap-12">
+          <ul className="flex max-sm:flex-col gap-12">
             {caraKerjaItems.map((item) => (
               <li key={item.id}>
                   <div className="flex flex-col items-center max-w-60 text-center gap-2">
