@@ -52,7 +52,7 @@ export default function Navbar() {
                 </button>
             </nav>
 
-            <aside className={`border bg-white flex-col gap-5 fixed right-4 rounded-lg top-25 px-3 py-3 hidden max-sm:flex transition-all duration-200 ease-in ${isSidebarOpened ? 'translate-x-0' : 'translate-x-full'}`}>
+            <aside className={`border z-999 bg-white flex-col gap-5 fixed right-4 rounded-lg top-25 px-3 py-3 hidden max-sm:flex transition-all duration-200 ease-in ${isSidebarOpened ? 'translate-x-0' : 'translate-x-full'}`}>
                 <ul className="flex flex-col gap-2">
                     {menuItems.map((item) => (
                         <li key={item.id} className={`group ${item.href == pathname ? "bg-(--color-light)" : "bg-transparent"} rounded-md px-4 py-2`}>
