@@ -9,7 +9,7 @@ const menuItems = [
 
 export default function Footer() {
     return (
-        <footer className="flex max-sm:flex-col h-auto min-h-[40vh] w-full justify-between max-sm:justify-start max-sm:gap-8 bg-(--color-light) px-20 max-sm:px-10 py-3 pt-8">
+        <footer className="flex max-sm:flex-col h-[40vh] w-full justify-between max-sm:justify-start max-sm:gap-8 bg-(--color-light) px-20 max-sm:px-10 py-3 pt-8">
             <div className="flex flex-col justify-between ">
                 <div>
                     <Image src={`/logo.svg`} height={250} width={250} alt="Logo"/>

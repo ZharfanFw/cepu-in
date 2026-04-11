@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito, Inter } from "next/font/google";
 import "./../globals.css";
-import Navbar from "@/components/Navbar";
+import NavbarWrapper from "@/components/NavbarWrapper";
 import Footer from "@/components/Footer";
 
 const nunito = Nunito({
@@ -29,8 +29,8 @@ export default function RootLayout({
       lang="en"
       className={`${nunito.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="flex flex-col">
-        <Navbar />  
+      <body className="min-h-full flex flex-col">
+        <NavbarWrapper />
         {children}
         <Footer />
       </body>
