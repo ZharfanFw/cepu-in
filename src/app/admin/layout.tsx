@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito, Inter } from "next/font/google";
 import "./../globals.css";
 import DashboardSidebar from "@/components/admin/Sidebar";
+import { Suspense } from "react";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -28,9 +29,13 @@ export default function RootLayout({
       lang="en"
       className={`${nunito.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex"> 
-        <DashboardSidebar />
-        {children}
+      <body className="min-h-full flex">
+        <div className="min-h-full flex w-full">
+          <Suspense fallback={<div className="w-55" />}>
+            <DashboardSidebar />
+          </Suspense>
+          <div className="ml-55 px-10 pt-10 flex-1">{children}</div>
+        </div>
       </body>
     </html>
   );
